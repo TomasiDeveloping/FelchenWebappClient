@@ -1,0 +1,122 @@
+<div class="container">
+  <h1 class="mt-4">Wetter</h1>
+  <hr>
+  <ng-container *ngIf="currentWeather">
+    <div class="card border-light">
+      <div class="card-header">
+        <div>
+          <span>{{currentWeather.cityName}}</span>
+        </div>
+        <div>
+                <span style="font-size: 0.8rem; color: white"> Zeit der Messung: {{currentWeather.date | date: 'HH:mm'}}
+                  Uhr</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="cardContainer">
+          <div class="header">
+            <div><img [src]="'https://openweathermap.org/img/wn/' + currentWeather.icon + '@2x.png'"
+                      alt="icon">
+            </div>
+            <div class="headerContent">
+              <div id="temperature">{{currentWeather.temp | number: '1.1-1'}} &deg;C</div>
+              <div>{{currentWeather.description}}</div>
+            </div>
+          </div>
+          <div id="minMaxTemp">
+            <div>Min <span>{{currentWeather.temp_min | number: '1.1-1'}} &deg;C</span></div>
+            <div>Max <span>{{currentWeather.temp_max | number: '1.1-1'}} &deg;C</span></div>
+          </div>
+          <div style="font-size: 0.9rem">Beaufort: <span
+            [ngStyle]="{color: getBeaufortColor(currentWeather.beauFord)}">{{currentWeather.beauFord}}</span> {{getBeaufortDescription(currentWeather.beauFord)}}
+          </div>
+          <hr>
+          <div class="currentDetails">
+            <div class="currentDetailContent">
+              <div>Luftfeuchtigkeit: <span>{{currentWeather.humidity}}%</span></div>
+              <div>Windstärke: <span>{{currentWeather.windSpeed | number: '1.1-1'}} km/h</span></div>
+            </div>
+            <div class="currentDetailContent">
+              <div>Luftdruck: <span>{{currentWeather.pressure}} hPa</span></div>
+              <div>Niederschlag:
+                <span>{{currentWeather.rain}} mm</span></div>
+            </div>
+            <div class="currentDetailContent">
+              <div>Sonnenaufgang: <span>{{currentWeather.sunrise | date: 'HH:mm'}}</span></div>
+              <div>Gefühlt: <span>{{currentWeather.feels_like | number: '1.1-1'}} &deg;C</span></div>
+
+            </div>
+            <div class="currentDetailContent">
+              <div>Sonnenuntergang: <span>{{currentWeather.sunset | date: 'HH:mm'}}</span></div>
+              <div>Schnee <span>{{currentWeather.snow }} mm</span></div>
+            </div>
+            <div>
+              <div class="currentDetailContent">
+                <div>Bewölkung: <span>{{currentWeather.clouds}} %</span></div>
+                <div>Sichtweite: <span>{{currentWeather.visibility| number: '1.1-2'}} km</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="errorMessage">
+    <p class="text-danger text-center">{{errorMessage}}</p>
+  </ng-container>
+  <hr>
+  <ng-container *ngIf="errorMessage.length <= 0">
+    <button (click)="onMoonClick()" class="btn btn-primary">
+      Mondphasen {{showMoonPhase ? 'verbergen' : 'Anzeigen'}}</button>
+    <div *ngIf="showMoonPhase" class="box">
+      <div *ngFor="let moon of moonPhase" class="moonBox">{{moon.day}}<img [src]="getMoonPictures(moon.phase)" alt="moon">
+      </div>
+    </div>
+    <hr>
+    <button (click)="onLoadForecast()"
+            class="btn btn-primary">{{sevenDayForecast ? 'Prognose verbergen' : '7-Tage Prognosse'}}</button>
+    <div *ngIf="sevenDayForecast" class="sevenDay">
+      <div *ngFor="let foreCast of forecastWeather | slice: 1" class="card border-light mb-3">
+        <div class="card-header">{{getDayName(foreCast.date.getDay())}} {{foreCast.date | date: 'dd.MM.yyyy'}}</div>
+        <div class="card-body">
+          <div class="dailyContainer">
+            <div class="dailyHeader">
+              <img [src]="'https://openweathermap.org/img/wn/' + foreCast.icon + '@2x.png'" alt="icon" height="auto"
+                   width="70px">
+              <div class="test">
+                <div>{{foreCast.temp.min | number: '1.1-1'}} &deg;C / {{foreCast.temp.max | number: '1.1-1'}}
+                  &deg;C
+                </div>
+                <div>{{foreCast.description}}</div>
+              </div>
+            </div>
+            <div class="dailyHeader">
+              <div style="font-size: 0.9rem">Regenrisiko: <span>{{foreCast.pop | number: '1.1-1'}} %</span></div>
+              <div style="font-size: 0.9rem">Luftfeuchtigkeit: <span>{{foreCast.humidity}} %</span></div>
+            </div>
+            <div class="dailyHeader">
+              <div style="font-size: 0.9rem">Sonnenaufgang: <span>{{foreCast.sunrise | date: 'HH:mm'}}</span></div>
+              <div style="font-size: 0.9rem">Sonnenuntergang: <span>{{foreCast.sunset | date: 'HH:mm'}}</span></div>
+            </div>
+            <div class="dailyHeader">
+              <div style="font-size: 0.9rem">Bewölkung: <span>{{foreCast.clouds}} %</span></div>
+              <div style="font-size: 0.9rem">UV-Index: <span
+                [ngStyle]="{color: getUvIndexColor(foreCast.uvi)}">{{foreCast.uvi | number: '1.0-0'}}</span></div>
+            </div>
+            <div class="dailyHeader">
+              <div style="font-size: 0.9rem">Lufdruck: <span>{{foreCast.pressure}} hPa</span></div>
+              <div style="font-size: 0.9rem">Niederschlag: <span>{{foreCast.rain | number: '1.1-1'}} mm</span></div>
+            </div>
+            <div class="dailyHeader">
+              <div style="font-size: 0.9rem">Windstärke: <span>{{foreCast.wind_speed  | number: '1.1-1'}} km/h</span>
+              </div>
+              <div style="font-size: 0.9rem">Schnee: <span>{{foreCast.snow | number: '1.1-1'}} mm</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </ng-container>
+</div>
+

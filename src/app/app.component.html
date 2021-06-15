@@ -1,0 +1,9 @@
+<ng-container *ngIf="!isLogin">
+  <app-auth></app-auth>
+</ng-container>
+<ng-container *ngIf="isLogin">
+  <app-navigation></app-navigation>
+</ng-container>
+<ngx-spinner>
+  <p>Bitte warten...</p>
+</ngx-spinner>

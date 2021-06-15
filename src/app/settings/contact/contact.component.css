@@ -1,0 +1,11 @@
+::ng-deep .mat-dialog-container {
+  background-color: lightgrey!important;
+}
+#submitButton {
+  width: 100%;
+}
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}

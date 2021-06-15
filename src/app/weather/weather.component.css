@@ -1,0 +1,65 @@
+.currentDetails {
+  display: flex;
+  flex-direction: column;
+}
+.currentDetailContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.headerContent {
+  display: flex;
+  flex-direction: column;
+}
+#temperature {
+  font-size: 1.7rem;
+}
+#description {
+  font-size: 0.9rem;
+}
+span {
+  color: gold;
+}
+#minMaxTemp {
+  display: flex;
+  justify-content: space-between;
+}
+.box{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.moonBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dailyContainer {
+  display: flex;
+  flex-direction: column;
+}
+.dailyHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.test {
+  display: flex;
+  flex-direction: column;
+}
+.sevenDay {
+  margin-top: 30px;
+}
+.uvColorRed {
+  color: red;
+}
+.card-header{
+  display: flex;
+  justify-content: space-between;
+}

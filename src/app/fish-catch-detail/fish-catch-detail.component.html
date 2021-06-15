@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="mt-4">Fang Details</h1>
+  <hr>
+  <div class="col-lg-8 offset-lg-2 mt-4" *ngIf="currentFishCatch">
+    <div class="card border-light mb-3">
+      <div class="card-header bg-transparent border-light">{{currentFishCatch.catchDate | date: 'dd.MM.yyyy HH:mm'}}</div>
+      <div class="card-body">
+        <h5 class="card-title"><span>{{currentFishCatch.lakeName}}</span></h5>
+        <div class="cardContainer">
+          <div class="cardContent">Nymphenname: <div><span>{{currentFishCatch.nymphName ? currentFishCatch.nymphName : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Nymphenfarbe: <div><span>{{currentFishCatch.nymphColor ? currentFishCatch.nymphColor : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Hakengrösse: <div><span>{{currentFishCatch.hookSize ? currentFishCatch.hookSize : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Nymphenköpfchen: <div><span>{{currentFishCatch.nymphHead ? currentFishCatch.nymphHead : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Tiefe des Standorts: <div><span>{{currentFishCatch.deepLocation ? currentFishCatch.deepLocation + ' Meter' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Tiefe des Fischfangs: <div><span>{{currentFishCatch.deepFishCatch ? currentFishCatch.deepFishCatch + ' Meter' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Wassertemperatur: <div><span>{{currentFishCatch.waterTemperature ? currentFishCatch.waterTemperature + ' &deg;C' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Wetter: <div><span>{{currentFishCatch.weather ? currentFishCatch.weather : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Luftdruck: <div><span>{{currentFishCatch.deepFishCatch ? currentFishCatch.airPressure + ' hPa' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Windstärke: <div><span>{{currentFishCatch.windSpeed ? currentFishCatch.windSpeed + ' km/h' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Lufttemperatur: <div><span>{{currentFishCatch.airTemperature ? currentFishCatch.airTemperature + ' &deg;C' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Öffentlicher Fang: <div><span>{{currentFishCatch.allowPublic ? 'Ja' : 'Nein'}}</span></div></div>
+        </div>
+      </div>
+      <div class="card-footer bg-transparent border-light">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-info me-md-2" type="button" (click)="onEdit()">Bearbeiten</button>
+          <button class="btn btn-danger" type="button" (click)="onDelete(currentFishCatch.id)">Löschen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-light" (click)="onBack()">Zurück</button>
+  </div>
+</div>

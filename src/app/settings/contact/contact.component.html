@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Support</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <p>Hast Du Fragen, Verbesserungen, Fehlermeldungen oder Lob ?</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="supportMailForm" *ngIf="supportMailForm">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input
+          [ngClass]="{
+                        'is-invalid': supportMailForm.controls.email.invalid &&
+                          (supportMailForm.controls.email.dirty || supportMailForm.controls.email.touched),
+                        'is-valid': supportMailForm.controls.email.valid
+                      }"
+          class="form-control"
+          formControlName="email"
+          id="email"
+          placeholder="E-Mail"
+          type="email">
+        <div *ngIf="supportMailForm.controls.email.errors &&
+           (supportMailForm.controls.email.dirty || supportMailForm.controls.email.touched)"
+             class="invalid-feedback">
+          <p *ngIf="supportMailForm.controls.email.errors.required">E-Mail ist ein Pflichtfeld</p>
+          <p *ngIf="supportMailForm.controls.email.errors.pattern">Ungültige E-Mail</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Nachricht</label>
+        <textarea
+          [ngClass]="{
+                        'is-invalid': supportMailForm.controls.message.invalid &&
+                            (supportMailForm.controls.message.dirty || supportMailForm.controls.message.touched),
+                        'is-valid': supportMailForm.controls.message.valid
+                      }"
+          class="form-control"
+          formControlName="message"
+          id="message">
+      </textarea>
+        <div *ngIf="supportMailForm.controls.message.errors &&
+           (supportMailForm.controls.message.dirty || supportMailForm.controls.message.touched)"
+             class="invalid-feedback">
+          <p *ngIf="supportMailForm.controls.message.errors.required">Nachricht ist ein Pflichtfeld</p>
+        </div>
+      </div>
+      <button id="submitButton" [disabled]="supportMailForm.invalid || !supportMailForm.dirty" class="btn btn-primary mt-2"
+              type="submit">
+        Senden
+      </button>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="btn btn-danger" mat-dialog-close>Abbrechen</button>
+</mat-dialog-actions>
+
+

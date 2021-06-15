@@ -1,0 +1,104 @@
+<mat-tab-group (selectedIndexChange)="onIndexChange($event)" mat-align-tabs="center"
+               xmlns="http://www.w3.org/1999/html">
+  <mat-tab label="Eigene Fänge">
+    <div class="col-lg-6 offset-lg-3 mt-4">
+      <div class="d-grid gap-2">
+        <button class="btn btn-success" routerLink="/addCatch" type="button">Fang hinzufügen</button>
+      </div>
+    </div>
+    <ng-container *ngIf="currentUserCatches && currentUserCatches.length > 0">
+    <div class="customRow">
+      <div class="form-group">
+        <label class="mt-2" for="pageSize">Anzahl Fänge pro Seite</label>
+        <select (ngModelChange)="onPageSizeChange($event)" [(ngModel)]="pageSize" aria-label="Default select example" class="form-select mb-4"
+                id="pageSize">
+          <option *ngFor="let availableSize of pageSizes">{{availableSize}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="mt-2" for="sortBy">Sortiert nach..</label>
+        <select (ngModelChange)="onSortChange($event)" aria-label="Default select example" class="form-select mb-4" id="sortBy" [(ngModel)]="sortBy">
+          <option value="desc">Neuste Fänge</option>
+          <option value="asc">Älteste Fänge</option>
+        </select>
+      </div>
+    </div>
+    <div *ngFor="let fishCatch of currentUserCatches" class="col-lg-8 offset-lg-2 mt-4">
+      <div class="card border-light">
+        <div class="card-header">{{fishCatch.catchDate | date: 'dd.MM.yyyy'}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{fishCatch.lakeName}}</h5>
+          <div class="cardContainer">
+            <div class="cardContent">Nymphenname:
+              <div>{{fishCatch.nymphName ? fishCatch.nymphName : 'KEINE ANGABEN'}}</div>
+            </div>
+            <div class="cardContent">Hakengrösse:
+              <div>{{fishCatch.hookSize ? fishCatch.hookSize : 'KEINE ANGABEN'}}</div>
+            </div>
+            <div class="cardContent">Wetter:
+              <div>{{fishCatch.weather ? fishCatch.weather : 'KEINE ANGABEN'}}</div>
+            </div>
+          </div>
+          <a class="btn btn-primary" routerLink="/details/{{fishCatch.id}}">Details zum Fang</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 offset-lg-2 mt-4">
+      <pagination (pageChanged)="onPageChange($event)" [boundaryLinks]="true" [itemsPerPage]="pageSize" [maxSize]="6"
+                  [totalItems]="totalCatches"
+                  firstText="&laquo;" lastText="&raquo;" nextText="&rsaquo;" previousText="&lsaquo;">
+      </pagination>
+    </div>
+    </ng-container>
+    <ng-container *ngIf="!currentUserCatches || currentUserCatches.length <= 0">
+      <h2 class="text-center text-info mt-4">
+        Keine Fänge
+      </h2>
+    </ng-container>
+  </mat-tab>
+
+  <mat-tab label="Öffentliche Fänge">
+    <ng-container *ngIf="publicCatches && publicCatches.length > 0">
+      <div class="form-group">
+        <label class="mt-2" for="pageSizePublic">Anzahl Fänge pro Seite</label>
+        <select (ngModelChange)="onPublicPageSizeChange($event)" [(ngModel)]="publicPageSize" aria-label="Default select example" class="form-select mb-4"
+                id="pageSizePublic">
+          <option *ngFor="let availableSize of publicPageSizes">{{availableSize}}</option>
+        </select>
+      </div>
+      <div *ngFor="let publicCatch of publicCatches" class="col-lg-8 offset-lg-2 mt-4">
+        <div class="card border-light">
+          <div class="card-header">{{publicCatch.catchDate | date: 'dd.MM.yyyy'}}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{publicCatch.lakeName}}</h5>
+            <div class="cardContainer">
+              <div class="cardContent">Nymphenfarbe:
+                <div>{{publicCatch.nymphColor ? publicCatch.nymphColor : 'KEINE ANGABEN'}}</div>
+              </div>
+              <div class="cardContent">Hakengrösse:
+                <div>{{publicCatch.hookSize ? publicCatch.hookSize : 'KEINE ANGABEN'}}</div>
+              </div>
+              <div class="cardContent">Tiefe des Fischfangs:
+                <div>{{publicCatch.deepFishCatch ? publicCatch.deepFishCatch + ' Meter' : 'KEINE ANGABEN'}}</div>
+              </div>
+              <div class="cardContent">Wetter:
+                <div>{{publicCatch.weather ? publicCatch.weather : 'KEINE ANGABEN'}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 offset-lg-2 mt-4">
+        <pagination (pageChanged)="onPublicPageChange($event)" [boundaryLinks]="true" [itemsPerPage]="publicPageSize" [maxSize]="6"
+                    [totalItems]="totalPublicCatches"
+                    firstText="&laquo;" lastText="&raquo;" nextText="&rsaquo;" previousText="&lsaquo;">
+        </pagination>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!publicCatches || publicCatches.length <= 0">
+      <h2 class="text-center text-info mt-4">
+        Keine öffentlichen Fänge
+      </h2>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>

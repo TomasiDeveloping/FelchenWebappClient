@@ -1,0 +1,29 @@
+<nav ngxNavbarDynamicExpand class="navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      Felchen App
+    </a>
+    <button class="navbar-toggler" type="button" (click)="collapse.toggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ngx-navbar-collapse #collapse="ngxNavbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" (click)="collapse.close()">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item" (click)="collapse.toggle()">
+          <a class="nav-link" routerLink="/wetter" routerLinkActive="actice">Wetter</a>
+        </li>
+        <li class="nav-item" (click)="collapse.toggle()">
+          <a class="nav-link" routerLink="/settings" routerLinkActive="actice">Einstellungen</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn" (click)="logout()">  <i class="fa fa-sign-out mr-2"></i>Logout</button>
+        </li>
+      </ul>
+    </ngx-navbar-collapse>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

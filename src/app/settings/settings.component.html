@@ -1,0 +1,161 @@
+<div class="container">
+  <h1 class="mt-4">Einstellungen</h1>
+  <hr>
+  <div *ngIf="currentUser && !editUser" class="userContainer">
+    <h5>Userdaten:</h5>
+    <div class="userContent">Vorname: <span>{{currentUser.firstName}}</span></div>
+    <div class="userContent">Nachname: <span>{{currentUser.lastName}}</span></div>
+    <div class="userContent">E-Mail: <span>{{currentUser.email}}</span></div>
+    <div class="userContent">Registriert seit: <span>{{currentUser.createdAt | date: 'dd.MM.yyyy'}}</span></div>
+    <button (click)="changeUser()" *ngIf="!editPassword" class="btn btn-primary mt-4">Bearbeiten</button>
+  </div>
+  <div *ngIf="editUser && editUserForm">
+    <form (ngSubmit)="onChangeUser()" [formGroup]="editUserForm">
+      <div class="form-label-group">
+        <label for="registerFirstName">Vorname</label>
+        <div class="input-group">
+          <input
+            [ngClass]="{
+                        'is-invalid': editUserForm.controls.firstName.invalid && (editUserForm.controls.firstName.dirty || editUserForm.controls.firstName.touched),
+                        'is-valid': editUserForm.controls.firstName.valid
+                      }"
+            class="form-control"
+            formControlName="firstName"
+            id="registerFirstName"
+            placeholder="Vorname"
+            type="text">
+          <div *ngIf="editUserForm.controls.firstName.errors &&
+                 (editUserForm.controls.firstName.dirty || editUserForm.controls.firstName.touched)"
+               class="invalid-feedback">
+            <p *ngIf="editUserForm.controls.firstName.errors.required">Vorname ist ein Pflichtfeld</p>
+            <p *ngIf="editUserForm.controls.firstName.errors.maxlength">Max 100 Zeichen erlaubt</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <label for="registerLastName">Nachname</label>
+        <div class="input-group">
+          <input
+            [ngClass]="{
+                        'is-invalid': editUserForm.controls.lastName.invalid && (editUserForm.controls.lastName.dirty || editUserForm.controls.lastName.touched),
+                        'is-valid': editUserForm.controls.lastName.valid
+                      }"
+            class="form-control"
+            formControlName="lastName"
+            id="registerLastName"
+            placeholder="Nachname"
+            type="text">
+          <div *ngIf="editUserForm.controls.lastName.errors &&
+                 (editUserForm.controls.lastName.dirty || editUserForm.controls.lastName.touched)"
+               class="invalid-feedback">
+            <p *ngIf="editUserForm.controls.lastName.errors.required">Nachname ist ein Pflichtfeld</p>
+            <p *ngIf="editUserForm.controls.lastName.errors.maxlength">Max 100 Zeichen erlaubt</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <label for="registerEmail">Email</label>
+        <div class="input-group">
+          <input
+            [ngClass]="{
+                        'is-invalid': editUserForm.controls.email.invalid && (editUserForm.controls.email.dirty || editUserForm.controls.email.touched),
+                        'is-valid': editUserForm.controls.email.valid
+                      }"
+            class="form-control"
+            formControlName="email"
+            id="registerEmail"
+            placeholder="E-Mail"
+            type="email">
+          <div *ngIf="editUserForm.controls.email.errors &&
+                 (editUserForm.controls.email.dirty || editUserForm.controls.email.touched)"
+               class="invalid-feedback">
+            <p *ngIf="editUserForm.controls.email.errors.required">Email ist ein Pflichtfeld</p>
+            <p *ngIf="editUserForm.controls.email.errors.email">ungültige E-Mail</p>
+            <p *ngIf="editUserForm.controls.email.errors.maxlength">Max 100 Zeichen erlaubt</p>
+          </div>
+        </div>
+      </div>
+      <div class="userContent">
+        <button [disabled]="editUserForm.invalid || !editUserForm.dirty" class="btn btn-success mt-4"
+                type="submit"> Speichern
+        </button>
+        <button (click)="editUser = false" class="btn btn-danger mt-4"
+                type="button"> Abbrechen
+        </button>
+      </div>
+    </form>
+    <hr>
+    <div id="deleteAccount">
+      <button (click)="onDeleteAccount()" class="btn btn-outline-danger">Account löschen</button>
+    </div>
+  </div>
+  <hr>
+  <div class="userContainer" *ngIf="!editPassword">
+    <button (click)="changePassword()" *ngIf="!editUser" class="btn btn-primary">Passwort ändern</button>
+  </div>
+  <div *ngIf="changePasswordForm && editPassword">
+    <form (ngSubmit)="onChangePassword()" [formGroup]="changePasswordForm">
+      <div class="form-group mt-4">
+        <label for="inputNewPassword">Neuse Passwort</label>
+        <input
+          [ngClass]="{
+                        'is-invalid': changePasswordForm.controls.password.invalid && (changePasswordForm.controls.password.dirty || changePasswordForm.controls.password.touched),
+                        'is-valid': changePasswordForm.controls.password.valid
+                      }"
+          autocomplete="on"
+          class="form-control"
+          formControlName="password"
+          id="inputNewPassword"
+          placeholder="New Password"
+          type="password">
+        <div *ngIf="changePasswordForm.controls.password.errors &&
+                 (changePasswordForm.controls.password.dirty || changePasswordForm.controls.password.touched)"
+             class="invalid-feedback">
+          <p *ngIf="changePasswordForm.controls.password.errors.required">Passwort ist ein Pflichtfeld</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputConfirmPassword">Passwort wiederholen</label>
+        <input
+          [ngClass]="{
+                        'is-invalid': changePasswordForm.controls.confirmPassword.invalid &&
+                        (changePasswordForm.controls.confirmPassword.dirty || changePasswordForm.controls.confirmPassword.touched),
+                        'is-valid': changePasswordForm.controls.confirmPassword.valid
+                  }"
+          autocomplete="on"
+          class="form-control"
+          formControlName="confirmPassword"
+          id="inputConfirmPassword"
+          placeholder="Confirm Password"
+          type="password">
+        <div *ngIf="changePasswordForm.controls.confirmPassword.errors &&
+                 (changePasswordForm.controls.confirmPassword.dirty || changePasswordForm.controls.confirmPassword.touched)"
+             class="invalid-feedback">
+          <p *ngIf="changePasswordForm.controls.confirmPassword.errors.required">Passwort wiederholen ist ein Pflichtfeld</p>
+          <p *ngIf="changePasswordForm.controls.confirmPassword.errors.isMatching">Passwort nicht identisch</p>
+        </div>
+      </div>
+      <div class="userContent">
+        <button [disabled]="changePasswordForm.invalid || !changePasswordForm.dirty" class="btn btn-success mt-4"
+                type="submit"> Speichern
+        </button>
+        <button (click)="editPassword = false;" class="btn btn-danger mt-4"
+                type="button"> Abbrechen
+        </button>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="appInfoContainer">
+    <h5>Developing by</h5>
+    <div>Tomasi - Developing</div>
+    <div>
+      <img src="./assets/core/Zuschnitt.png" alt="logo">
+    </div>
+    <div>App - Version: <span>{{appVersion}}</span></div>
+    <hr style="width: 100%">
+    <button (click)="onContact()" class="btn btn-success mb-4">E-Mail an den Entwickler</button>
+<!--    <button class="btn btn-outline-warning mt-4 mb-4">Spende dem Entwickler ein Kaffe</button>-->
+    <div style="font-size: 0.8rem;">Copyright © {{currentYear | date: 'yyyy'}} All Rights Reserved by Tomasi Developing</div>
+  </div>
+</div>

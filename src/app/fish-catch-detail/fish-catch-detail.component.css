@@ -1,0 +1,13 @@
+.cardContent {
+  display: flex;
+  justify-content: space-between;
+}
+.cardContainer {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+}
+span{
+  color: gold;
+}

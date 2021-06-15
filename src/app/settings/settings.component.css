@@ -1,0 +1,24 @@
+.userContainer {
+  display: flex;
+  flex-direction: column;
+}
+.userContent {
+  display: flex;
+  justify-content: space-between;
+}
+span{
+  color: gold;
+}
+img {
+  width: 120px;
+  height: auto;
+}
+.appInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#deleteAccount {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,9 @@
+::ng-deep .mat-dialog-container {
+  background-color: lightgrey!important;
+}
+#timeCol {
+  margin-top: 9px;
+}
+#submitButton {
+  margin-right: 10px;
+}

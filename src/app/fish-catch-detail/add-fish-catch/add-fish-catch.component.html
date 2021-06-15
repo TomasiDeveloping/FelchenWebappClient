@@ -1,0 +1,169 @@
+<div class="container">
+  <h1 class="mt-4">Fang hinzufügen</h1>
+  <hr>
+  <ng-container *ngIf="currentLocation">
+    <code>Wetterdaten geladen für {{currentLocation}} am: {{currentWeatherDate | date: 'dd.MM.yyyy HH:mm:ss'}}</code>
+  </ng-container>
+  <form (ngSubmit)="onSubmit()" *ngIf="fishCatchForm" [formGroup]="fishCatchForm">
+    <div class="row">
+      <div class="col">
+        <label class="col-form-label" for="catchDate">Fangdatum</label>
+        <input
+          class="form-control"
+          formControlName="catchDate"
+          id="catchDate"
+          placeholder="Fangdatum"
+          type="date">
+      </div>
+      <div class="col" id="timeCol">
+        <timepicker [showMeridian]="false" formControlName="catchTime" id="catchTime"></timepicker>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label" for="nymphName">Nymphenname</label>
+      <input
+        class="form-control"
+        formControlName="nymphName"
+        id="nymphName"
+        placeholder="Nymphenname"
+        type="text">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="nymphColor">Nymphenfarbe</label>
+      <input
+        class="form-control"
+        formControlName="nymphColor"
+        id="nymphColor"
+        placeholder="Nymphenfarbe"
+        type="text">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="hookSize">Hakengrösse</label>
+      <input
+        class="form-control"
+        formControlName="hookSize"
+        id="hookSize"
+        placeholder="Hakengrösse"
+        type="number">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="nymphHead">Nymphenköpfchen</label>
+      <input
+        class="form-control"
+        formControlName="nymphHead"
+        id="nymphHead"
+        placeholder="Nymphenköpfchen"
+        type="text">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="lakeName">Gewässer</label>
+      <input
+        class="form-control"
+        formControlName="lakeName"
+        id="lakeName"
+        placeholder="Gewässer"
+        type="text">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="deepLocation">Tiefe Standort</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="deepLocation"
+          id="deepLocation"
+          placeholder="Tiefe Standort"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">Meter</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="deepFishCatch">Tiefe Fischfang</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="deepFishCatch"
+          id="deepFishCatch"
+          placeholder="Tiefe Fischfang"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">Meter</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="waterTemperature">Wassertemperatur</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="waterTemperature"
+          id="waterTemperature"
+          placeholder="Wassertemperatur"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">&deg;C</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="weather">Wetter</label>
+      <input
+        class="form-control"
+        formControlName="weather"
+        id="weather"
+        placeholder="Wetter"
+        type="text">
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="airPressure">Luftdruck</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="airPressure"
+          id="airPressure"
+          placeholder="Luftdruck"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">hPa</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="windSpeed">Windstärke</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="windSpeed"
+          id="windSpeed"
+          placeholder="Windgeschwindigkeit"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">km/h</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-8">
+      <label class="col-form-label mt-2" for="airTemperature">Lufttemperatur</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          formControlName="airTemperature"
+          id="airTemperature"
+          placeholder="Lufttemperatur"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">&deg;C</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-check form-switch mt-4">
+      <input class="form-check-input" formControlName="allowPublic" id="allowPublic" type="checkbox">
+      <label class="form-check-label" for="allowPublic">Öffentich</label>
+    </div>
+            <button [disabled]="!fishCatchForm.dirty" class="btn btn-success mt-4 mb-4"
+                    type="submit">
+              Speichern
+            </button>
+  </form>
+</div>
