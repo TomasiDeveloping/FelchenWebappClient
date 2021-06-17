@@ -28,6 +28,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {SpinnerInterceptor} from "./interceptors/spinner.interceptor";
 import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import {TooltipModule} from "ngx-bootstrap/tooltip";
+import { VersionDescriptionComponent } from './settings/version-description/version-description.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     AuthComponent,
     SettingsComponent,
     ContactComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    VersionDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     BsDropdownModule.forRoot(),
     TimepickerModule.forRoot(),
     PaginationModule.forRoot(),
+    TooltipModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     })

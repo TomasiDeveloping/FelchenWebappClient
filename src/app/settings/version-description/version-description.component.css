@@ -1,0 +1,15 @@
+.container {
+  font-size: 0.9rem;
+}
+p {
+  font-size: 0.8rem;
+  color: blue;
+}
+p:hover {
+  cursor: pointer;
+  color: red;
+}
+#closeButton {
+  display: flex;
+  justify-content: flex-end;
+}

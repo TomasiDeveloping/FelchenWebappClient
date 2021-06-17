@@ -8,7 +8,13 @@ coming soon...
 
 ## Changelog
 
-###Version 1.0.0
+####Version 1.0.0
 - Fisrt Publish
+
+####Version 1.0.1
+- Change Title
+- Change Color "Forgot Password"
+- Add Version Info Dialog
+
 
 

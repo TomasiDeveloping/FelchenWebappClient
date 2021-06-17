@@ -9,6 +9,7 @@ import * as jwt_decode from "jwt-decode";
 import {ToastrService} from "ngx-toastr";
 import Swal from "sweetalert2";
 import {AuthService} from "../services/auth.service";
+import {VersionDescriptionComponent} from "./version-description/version-description.component";
 
 @Component({
   selector: 'app-settings',
@@ -155,6 +156,13 @@ export class SettingsComponent implements OnInit {
           }
         })
       }
+    })
+  }
+
+  onAppVersion() {
+    this.dialog.open(VersionDescriptionComponent, {
+      width: '80%',
+      height: 'auto'
     })
   }
 }
