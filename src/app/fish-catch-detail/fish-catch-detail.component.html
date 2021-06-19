@@ -18,7 +18,12 @@
           <div class="cardContent">Luftdruck: <div><span>{{currentFishCatch.deepFishCatch ? currentFishCatch.airPressure + ' hPa' : 'KEINE ANGABEN'}}</span></div></div>
           <div class="cardContent">Windstärke: <div><span>{{currentFishCatch.windSpeed ? currentFishCatch.windSpeed + ' km/h' : 'KEINE ANGABEN'}}</span></div></div>
           <div class="cardContent">Lufttemperatur: <div><span>{{currentFishCatch.airTemperature ? currentFishCatch.airTemperature + ' &deg;C' : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Breitengrad: <div><span>{{currentFishCatch.latitude ? currentFishCatch.latitude : 'KEINE ANGABEN'}}</span></div></div>
+          <div class="cardContent">Längengrad: <div><span>{{currentFishCatch.longitude ? currentFishCatch.longitude : 'KEINE ANGABEN'}}</span></div></div>
           <div class="cardContent">Öffentlicher Fang: <div><span>{{currentFishCatch.allowPublic ? 'Ja' : 'Nein'}}</span></div></div>
+          <ng-container *ngIf="currentFishCatch.longitude && currentFishCatch.latitude">
+            <button (click)="onFishCatchMap()" class="btn btn-outline-success">Fangposition auf Google Maps</button>
+          </ng-container>
         </div>
       </div>
       <div class="card-footer bg-transparent border-light">

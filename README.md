@@ -15,14 +15,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Changelog
 
-#### Version 1.0.0
+#### Version 1.1.0
 
-- Fisrt Publish
+- Longitude and latitude can be saved during capture
+- Longitude and latitude are filled in automatically if the position can be accessed
+- If the catch has GPS coordinates, the position can be viewed on Google Maps via a button in the detailed view
 
 #### Version 1.0.1
 
 - Change Title
 - Change Color "Forgot Password"
 - Add Version Info Dialog
+
+
+#### Version 1.0.0
+
+- Fisrt Publish
 
 

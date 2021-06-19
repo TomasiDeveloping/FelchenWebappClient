@@ -91,7 +91,9 @@ export class AddFishCatchComponent implements OnInit {
       airPressure: new FormControl(this.currentAirPressure ? this.currentAirPressure : null),
       windSpeed: new FormControl(this.currentWindSpeed ? this.currentWindSpeed : null),
       airTemperature: new FormControl(this.currentAirTemperature ? this.currentAirTemperature : null),
-      allowPublic: new FormControl(false)
+      allowPublic: new FormControl(false),
+      latitude: new FormControl(this.latitude ? this.latitude : null),
+      longitude: new FormControl(this.longitude ? this.longitude : null)
     });
   }
 
@@ -100,7 +102,6 @@ export class AddFishCatchComponent implements OnInit {
     const date = new Date(this.fishCatchForm?.value.catchDate);
     const time = new Date(this.fishCatchForm?.value.catchTime);
     fishCatch.catchDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()));
-    console.log(fishCatch);
     this.fishCatchService.insertFishCatch(fishCatch).subscribe(result => {
       if (result) {
         this.toastr.success('Fang wurde hinzugefügt', 'Neuer Fang');

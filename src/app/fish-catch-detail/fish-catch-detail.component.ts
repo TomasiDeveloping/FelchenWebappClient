@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FishCatchService} from "../services/fish-catch.service";
 import {FishCatch} from "../models/fishCatch.model";
@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import {MatDialog} from "@angular/material/dialog";
 import {EditFishCatchComponent} from "./edit-fish-catch/edit-fish-catch.component";
 import {ToastrService} from "ngx-toastr";
+
 
 @Component({
   selector: 'app-fish-catch-detail',
@@ -80,5 +81,9 @@ export class FishCatchDetailComponent implements OnInit {
         this.getFishCatch();
       }
     });
+  }
+
+  onFishCatchMap() {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${this.currentFishCatch?.latitude},${this.currentFishCatch?.longitude}`, '_target');
   }
 }

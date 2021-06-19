@@ -14,5 +14,7 @@ export interface FishCatch {
   airPressure: number;
   windSpeed: number;
   airTemperature: number;
-  allowPublic: boolean
+  allowPublic: boolean;
+  latitude?: number;
+  longitude?: number;
 }

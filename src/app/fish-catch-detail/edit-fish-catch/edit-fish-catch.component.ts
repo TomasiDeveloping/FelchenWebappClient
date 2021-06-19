@@ -51,7 +51,9 @@ export class EditFishCatchComponent implements OnInit {
       airPressure: new FormControl(this.currentFishCatch.airPressure),
       windSpeed: new FormControl(this.currentFishCatch.windSpeed),
       airTemperature: new FormControl(this.currentFishCatch.airTemperature),
-      allowPublic: new FormControl(this.currentFishCatch.allowPublic)
+      allowPublic: new FormControl(this.currentFishCatch.allowPublic),
+      latitude: new FormControl(this.currentFishCatch.latitude),
+      longitude: new FormControl(this.currentFishCatch.longitude)
     });
   }
 
@@ -60,7 +62,6 @@ export class EditFishCatchComponent implements OnInit {
     const date = new Date(this.fishCatchForm?.value.catchDate);
     const time = new Date(this.fishCatchForm?.value.catchTime);
     fishCatch.catchDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes(), time.getSeconds()));
-    console.log(fishCatch);
     this.fishCatchService.updateFishCatch(fishCatch.id, fishCatch).subscribe(result => {
       if (result) {
         this.currentFishCatch = result;
