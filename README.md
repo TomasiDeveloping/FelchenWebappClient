@@ -15,6 +15,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Changelog
 
+#### Version 1.1.1
+
+- Bug Fix Moon images
+
 #### Version 1.1.0
 
 - Longitude and latitude can be saved during capture

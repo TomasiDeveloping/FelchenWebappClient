@@ -127,7 +127,7 @@ export class WeatherComponent implements OnInit {
     if (phase === 0.5) {
       return '../assets/moon/full-moon.png'
     }
-    if (phase > 0.56 && phase < 0.74) {
+    if (phase > 0.51 && phase < 0.74) {
       return '../assets/moon/waning-gibbous-moon.png'
     }
     if (phase === 0.75) {
