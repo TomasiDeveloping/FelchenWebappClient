@@ -134,7 +134,7 @@ export class WeatherComponent implements OnInit {
       return '../assets/moon/last-quarter-moon.png'
     }
     if (phase > 0.76 && phase < 0.99) {
-      return '../assets/moon/waning-crescent.png'
+      return '../assets/moon/waning-crescent-moon.png'
     }
     return '';
   }
