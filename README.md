@@ -15,6 +15,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Changelog
 
+#### Version 1.2.0
+
+- Update Angular 12 -> 13
+- npm update
+- ngx spinner fix
+
 #### Version 1.1.3
 
 - Rain risk % display error fixed
