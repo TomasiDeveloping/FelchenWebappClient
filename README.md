@@ -15,6 +15,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Changelog
 
+#### Version 1.1.3
+
+- Rain risk % display error fixed
+
 #### Version 1.1.2
 
 - Bug Fix Moon images

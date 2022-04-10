@@ -35,7 +35,7 @@ export class WeatherService {
           humidity = res.humidity;
           icon = res.weather[0].icon;
           moon_phase = res.moon_phase;
-          pop = res.pop;
+          pop = res.pop * 100;
           pressure = res.pressure;
           rain = res.rain ? res.rain : 0;
           snow = res.snow ? res.snow : 0;
