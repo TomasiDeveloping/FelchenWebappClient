@@ -29,7 +29,7 @@
     "ngx-bootstrap": "^8.0.0",
     "ngx-bootstrap-navbar": "1.0.0",
     "ngx-spinner": "^13.1.1",
-    "ngx-toastr": "^14.0.0",
+    "ngx-toastr": "^14.2.3",
     "ol": "^6.5.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.0.16",
