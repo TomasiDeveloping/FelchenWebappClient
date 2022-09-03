@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FishCatch} from "../../models/fishCatch.model";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
@@ -16,7 +16,7 @@ defineLocale('de', deLocale);
 })
 export class EditFishCatchComponent implements OnInit {
 
-  fishCatchForm: FormGroup | undefined;
+  fishCatchForm: UntypedFormGroup | undefined;
   currentFishCatch: FishCatch;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -34,26 +34,26 @@ export class EditFishCatchComponent implements OnInit {
   }
 
   createForm() {
-    this.fishCatchForm = new FormGroup({
-      id: new FormControl(this.currentFishCatch.id),
-      userId: new FormControl(this.currentFishCatch.userId),
-      nymphName: new FormControl(this.currentFishCatch.nymphName),
-      nymphColor: new FormControl(this.currentFishCatch.nymphColor),
-      catchDate: new FormControl(new Date(this.currentFishCatch.catchDate).toISOString().substr(0, 10)),
-      catchTime: new FormControl(new Date(this.currentFishCatch.catchDate)),
-      hookSize: new FormControl(this.currentFishCatch.hookSize),
-      nymphHead: new FormControl(this.currentFishCatch.nymphHead),
-      lakeName: new FormControl(this.currentFishCatch.lakeName),
-      deepLocation: new FormControl(this.currentFishCatch.deepLocation),
-      deepFishCatch: new FormControl(this.currentFishCatch.deepFishCatch),
-      waterTemperature: new FormControl(this.currentFishCatch.waterTemperature),
-      weather: new FormControl(this.currentFishCatch.weather),
-      airPressure: new FormControl(this.currentFishCatch.airPressure),
-      windSpeed: new FormControl(this.currentFishCatch.windSpeed),
-      airTemperature: new FormControl(this.currentFishCatch.airTemperature),
-      allowPublic: new FormControl(this.currentFishCatch.allowPublic),
-      latitude: new FormControl(this.currentFishCatch.latitude),
-      longitude: new FormControl(this.currentFishCatch.longitude)
+    this.fishCatchForm = new UntypedFormGroup({
+      id: new UntypedFormControl(this.currentFishCatch.id),
+      userId: new UntypedFormControl(this.currentFishCatch.userId),
+      nymphName: new UntypedFormControl(this.currentFishCatch.nymphName),
+      nymphColor: new UntypedFormControl(this.currentFishCatch.nymphColor),
+      catchDate: new UntypedFormControl(new Date(this.currentFishCatch.catchDate).toISOString().substr(0, 10)),
+      catchTime: new UntypedFormControl(new Date(this.currentFishCatch.catchDate)),
+      hookSize: new UntypedFormControl(this.currentFishCatch.hookSize),
+      nymphHead: new UntypedFormControl(this.currentFishCatch.nymphHead),
+      lakeName: new UntypedFormControl(this.currentFishCatch.lakeName),
+      deepLocation: new UntypedFormControl(this.currentFishCatch.deepLocation),
+      deepFishCatch: new UntypedFormControl(this.currentFishCatch.deepFishCatch),
+      waterTemperature: new UntypedFormControl(this.currentFishCatch.waterTemperature),
+      weather: new UntypedFormControl(this.currentFishCatch.weather),
+      airPressure: new UntypedFormControl(this.currentFishCatch.airPressure),
+      windSpeed: new UntypedFormControl(this.currentFishCatch.windSpeed),
+      airTemperature: new UntypedFormControl(this.currentFishCatch.airTemperature),
+      allowPublic: new UntypedFormControl(this.currentFishCatch.allowPublic),
+      latitude: new UntypedFormControl(this.currentFishCatch.latitude),
+      longitude: new UntypedFormControl(this.currentFishCatch.longitude)
     });
   }
 

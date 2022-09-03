@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {FishCatchService} from "../../services/fish-catch.service";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -17,7 +17,7 @@ import * as jwt_decode from "jwt-decode";
 export class AddFishCatchComponent implements OnInit {
 
   currentUserId: number | undefined;
-  fishCatchForm: FormGroup | undefined;
+  fishCatchForm: UntypedFormGroup | undefined;
   latitude: number = 0;
   longitude: number = 0;
   currentAirPressure: number |undefined;
@@ -74,26 +74,26 @@ export class AddFishCatchComponent implements OnInit {
   }
 
   createForm() {
-    this.fishCatchForm = new FormGroup({
-      id: new FormControl(0),
-      userId: new FormControl(this.currentUserId),
-      nymphName: new FormControl(null),
-      nymphColor: new FormControl(null),
-      catchDate: new FormControl(new Date().toISOString().substr(0, 10)),
-      catchTime: new FormControl(new Date()),
-      hookSize: new FormControl(null),
-      nymphHead: new FormControl(null),
-      lakeName: new FormControl(null),
-      deepLocation: new FormControl(null),
-      deepFishCatch: new FormControl(null),
-      waterTemperature: new FormControl(null),
-      weather: new FormControl(this.currentWeather ? this.currentWeather : null),
-      airPressure: new FormControl(this.currentAirPressure ? this.currentAirPressure : null),
-      windSpeed: new FormControl(this.currentWindSpeed ? this.currentWindSpeed : null),
-      airTemperature: new FormControl(this.currentAirTemperature ? this.currentAirTemperature : null),
-      allowPublic: new FormControl(false),
-      latitude: new FormControl(this.latitude ? this.latitude : null),
-      longitude: new FormControl(this.longitude ? this.longitude : null)
+    this.fishCatchForm = new UntypedFormGroup({
+      id: new UntypedFormControl(0),
+      userId: new UntypedFormControl(this.currentUserId),
+      nymphName: new UntypedFormControl(null),
+      nymphColor: new UntypedFormControl(null),
+      catchDate: new UntypedFormControl(new Date().toISOString().substr(0, 10)),
+      catchTime: new UntypedFormControl(new Date()),
+      hookSize: new UntypedFormControl(null),
+      nymphHead: new UntypedFormControl(null),
+      lakeName: new UntypedFormControl(null),
+      deepLocation: new UntypedFormControl(null),
+      deepFishCatch: new UntypedFormControl(null),
+      waterTemperature: new UntypedFormControl(null),
+      weather: new UntypedFormControl(this.currentWeather ? this.currentWeather : null),
+      airPressure: new UntypedFormControl(this.currentAirPressure ? this.currentAirPressure : null),
+      windSpeed: new UntypedFormControl(this.currentWindSpeed ? this.currentWindSpeed : null),
+      airTemperature: new UntypedFormControl(this.currentAirTemperature ? this.currentAirTemperature : null),
+      allowPublic: new UntypedFormControl(false),
+      latitude: new UntypedFormControl(this.latitude ? this.latitude : null),
+      longitude: new UntypedFormControl(this.longitude ? this.longitude : null)
     });
   }
 

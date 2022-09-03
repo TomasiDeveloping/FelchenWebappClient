@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ToastrService} from "ngx-toastr";
 
@@ -9,7 +9,7 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  forgotPasswordForm: FormGroup | undefined;
+  forgotPasswordForm: UntypedFormGroup | undefined;
 
   constructor(private authService: AuthService, private toaster: ToastrService) { }
 
@@ -18,8 +18,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   createForm() {
-    this.forgotPasswordForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email])
+    this.forgotPasswordForm = new UntypedFormGroup({
+      email: new UntypedFormControl(null, [Validators.required, Validators.email])
     });
   }
 
