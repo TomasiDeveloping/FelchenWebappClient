@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CoreService} from "../../services/core.service";
 import {ToastrService} from "ngx-toastr";
@@ -10,7 +10,7 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  supportMailForm: FormGroup | undefined;
+  supportMailForm: UntypedFormGroup | undefined;
   userEmail: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private coreService: CoreService, private toastr: ToastrService, private dialogRef: MatDialogRef<ContactComponent>)
@@ -23,9 +23,9 @@ export class ContactComponent implements OnInit {
   }
 
   createContactForm() {
-    this.supportMailForm = new FormGroup({
-      email: new FormControl(this.userEmail, [Validators.required, Validators.email]),
-      message: new FormControl(null, [Validators.required])
+    this.supportMailForm = new UntypedFormGroup({
+      email: new UntypedFormControl(this.userEmail, [Validators.required, Validators.email]),
+      message: new UntypedFormControl(null, [Validators.required])
     });
   }
 

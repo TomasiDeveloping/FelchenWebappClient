@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, AsyncValidatorFn, UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
@@ -13,8 +13,8 @@ import {map, switchMap} from "rxjs/operators";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  loginForm: FormGroup | undefined;
-  registerForm: FormGroup | undefined;
+  loginForm: UntypedFormGroup | undefined;
+  registerForm: UntypedFormGroup | undefined;
 
   constructor(private authService: AuthService, private toastr: ToastrService, private dialog: MatDialog) { }
 
@@ -23,19 +23,19 @@ export class AuthComponent implements OnInit {
   }
 
   createLoginForm() {
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required]),
+    this.loginForm = new UntypedFormGroup({
+      email: new UntypedFormControl(null, [Validators.required, Validators.email]),
+      password: new UntypedFormControl(null, [Validators.required]),
     });
   }
 
   createRegisterForm() {
-    this.registerForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(100)], this.validateEmailNotTaken()),
-      password: new FormControl(null, [Validators.required]),
-      confirmPassword: new FormControl(null, [Validators.required, this.matchValues('password')]),
-      firstName: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
-      lastName: new FormControl(null, [Validators.required, Validators.maxLength(100)])
+    this.registerForm = new UntypedFormGroup({
+      email: new UntypedFormControl(null, [Validators.required, Validators.email, Validators.maxLength(100)], this.validateEmailNotTaken()),
+      password: new UntypedFormControl(null, [Validators.required]),
+      confirmPassword: new UntypedFormControl(null, [Validators.required, this.matchValues('password')]),
+      firstName: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100)]),
+      lastName: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100)])
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/user.service";
 import {User} from "../models/user.model";
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {environment} from "../../environments/environment";
 import {MatDialog} from "@angular/material/dialog";
 import {ContactComponent} from "./contact/contact.component";
@@ -21,8 +21,8 @@ export class SettingsComponent implements OnInit {
   currentUser: User | undefined;
   editUser = false;
   editPassword = false;
-  editUserForm: FormGroup | undefined;
-  changePasswordForm: FormGroup | undefined;
+  editUserForm: UntypedFormGroup | undefined;
+  changePasswordForm: UntypedFormGroup | undefined;
   appVersion = environment.appVersion;
   currentYear = new Date();
   currentUserId = 0;
@@ -50,19 +50,19 @@ export class SettingsComponent implements OnInit {
   }
 
   createEditUserForm() {
-    this.editUserForm = new FormGroup({
-      id: new FormControl(this.currentUser?.id),
-      firstName: new FormControl(this.currentUser?.firstName, [Validators.required, Validators.maxLength(100)]),
-      lastName: new FormControl(this.currentUser?.lastName, [Validators.required, Validators.maxLength(100)]),
-      email: new FormControl(this.currentUser?.email, [Validators.required, Validators.email]),
-      createdAt: new FormControl(this.currentUser?.createdAt),
-      isActive: new FormControl(this.currentUser?.isActive)
+    this.editUserForm = new UntypedFormGroup({
+      id: new UntypedFormControl(this.currentUser?.id),
+      firstName: new UntypedFormControl(this.currentUser?.firstName, [Validators.required, Validators.maxLength(100)]),
+      lastName: new UntypedFormControl(this.currentUser?.lastName, [Validators.required, Validators.maxLength(100)]),
+      email: new UntypedFormControl(this.currentUser?.email, [Validators.required, Validators.email]),
+      createdAt: new UntypedFormControl(this.currentUser?.createdAt),
+      isActive: new UntypedFormControl(this.currentUser?.isActive)
     });
   }
   createChangePasswordForm() {
-    this.changePasswordForm = new FormGroup({
-      password: new FormControl(null, [Validators.required]),
-      confirmPassword: new FormControl(null, [Validators.required, this.matchValues('password')])
+    this.changePasswordForm = new UntypedFormGroup({
+      password: new UntypedFormControl(null, [Validators.required]),
+      confirmPassword: new UntypedFormControl(null, [Validators.required, this.matchValues('password')])
     });
   }
 
