@@ -28,7 +28,7 @@
     "moment": "^2.29.4",
     "ngx-bootstrap": "^9.0.0",
     "ngx-bootstrap-navbar": "14.0.0",
-    "ngx-spinner": "^13.1.1",
+    "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^14.2.3",
     "ol": "^6.14.1",
     "rxjs": "~7.5.5",
