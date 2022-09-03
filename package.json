@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@ng-web-apis/common": "^2.0.1",
-    "@ng-web-apis/geolocation": "^1.0.4",
+    "@ng-web-apis/geolocation": "^2.0.0",
     "bootstrap": "^5.2.0",
     "bootswatch": "^5.2.0",
     "jwt-decode": "^3.1.2",
