@@ -15,6 +15,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Changelog
 
+#### Version 1.3.0
+
+- Updtae Angular 13 -> 14
+- NPM Packages update
+
 #### Version 1.2.0
 
 - Update Angular 12 -> 13
